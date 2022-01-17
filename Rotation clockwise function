@@ -1,0 +1,27 @@
+import math
+
+def rotx(matrix,degree):
+
+#rotation clockwise the positive x axis
+  x=math.radians(degree)
+  matrix2= sympy.Matrix([[1,0,0],[1,math.cos(x),-math.sin(x)],[0,math.sin(x),math.cos(x)]])
+  print(matrix2)
+  ma=matrix2*matrix
+  return ma
+def roty(matrix,degree):
+
+#rotation clockwise the positive y axis
+  x=math.radians(degree)
+  matrix2= sympy.Matrix([[math.cos(x),0,math.sin(x)],[0,1,0],[-math.sin(x),0,math.cos(x)]])
+  print(matrix2)
+  ma=matrix2*matrix
+  return ma
+def rotz(matrix,degree):
+
+#rotation clockwise the positive y axis
+  x=math.radians(degree)
+  matrix2= sympy.Matrix([[math.cos(x),-math.sin(x),0],[math.sin(x),math.cos(x),0],[0,0,1]])
+  print(matrix2)
+  ma=matrix2*matrix
+  return ma
+
