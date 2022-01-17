@@ -1,0 +1,36 @@
+#____________________________
+
+def rowmul(matrix, index, k):
+    for i in range(len(matrix[index])):
+        matrix[index][i] = k*matrix[index][i]
+    return matrix
+def rowadd(matrix, index1, index2, k):
+    for i in range(len(matrix[index1])):
+        matrix[index1][i] = (matrix[index1][i] + k*matrix[index2][i])
+    return matrix
+def rref(matrix):
+  #Reduced row echelon form function
+    matrix2 = copy.deepcopy(matrix)
+    rows = len(matrix2)
+    print(matrix2)
+    print("____________________")
+    for i in range(rows):
+        if (matrix2[i][i] != 1 and matrix2[i][i] != 0):
+            print("multiply row",i+1,"to",1/matrix2[i][i],"\n")
+            rowmul(matrix2, i, 1/matrix2[i][i])
+            print(matrix2,"\n")
+            print("____________________")
+
+        for j in range(i + 1, rows):
+            if (matrix2[j][i] != 0):
+                print("add ",-matrix2[j][i]," row",i+1,"to row",j+1,"\n")
+                rowadd(matrix2, j, i, -matrix2[j][i])
+                print(matrix2, "\n")
+                print("____________________")
+    rows = len(matrix2)
+    for i in range(rows):
+        if matrix2[i][i] == 1:
+            for j in range(i):
+                print("add",-matrix2[j][i],"row",i+1,"to row",j+1,"\n")
+                rowadd(matrix2, j, i, -matrix2[j][i])
+    return matrix2
